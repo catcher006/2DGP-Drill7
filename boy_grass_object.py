@@ -29,10 +29,12 @@ class Boy:
 # 41x41 크기 땅에 닿는 y 좌표 70
 class Ball:
     def __init__(self):
-        self.image = load_image('ball41x41.png')
+        self.ball_type = random.randint(0,1)
+        if self.ball_type == 0:
+            self.image = load_image('ball41x41.png')
+            self.limit_y = 70
         self.x = random.randint(0, 700)
         self.y = 599
-        self.limit_y = 70
 
     def draw(self):
         self.image.draw(self.x, self.y)
