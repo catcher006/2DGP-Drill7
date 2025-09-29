@@ -1,3 +1,5 @@
+#2022184020 게임공학과 서성호
+
 from pico2d import *
 import random
 
