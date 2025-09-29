@@ -32,12 +32,15 @@ class Ball:
         self.image = load_image('ball41x41.png')
         self.x = random.randint(0, 700)
         self.y = 599
+        self.limit_y = 70
 
     def draw(self):
         self.image.draw(self.x, self.y)
 
     def update(self):
-            self.y -= random.randint(0,7)
+        self.y -= random.randint(0,7)
+        if self.y < self.limit_y:
+            self.y = self.limit_y
 
 def handle_events():
     global running
