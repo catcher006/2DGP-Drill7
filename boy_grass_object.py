@@ -26,20 +26,18 @@ class Boy:
         self.x += 5
         self.frame = (self.frame + 1) % 8
 
-class Zombie:
+# 41x41 크기 땅에 닿는 y 좌표 70
+class Ball:
     def __init__(self):
-        self.x, self.y = 100, 170
-        self.frame = 0
-        self.image = load_image('zombie_run_animation.png')
-
-    def update(self):
-        self.frame = (self.frame + 1) % 10
-        self.x += 5
+        self.image = load_image('ball41x41.png')
+        self.x = random.randint(0, 700)
+        self.y = 599
 
     def draw(self):
-        frame_width = self.image.w // 10
-        frame_height = self.image.h
-        self.image.clip_draw(self.frame*frame_width, 0, frame_width, frame_height, self.x, self.y, frame_width // 2, frame_height // 2)
+        self.image.draw(self.x, self.y)
+
+    def update(self):
+            self.y -= random.randint(0,7)
 
 def handle_events():
     global running
@@ -67,8 +65,9 @@ def reset_world():
     team = [Boy() for _ in range(11)]
     world += team
 
-    zombie = Zombie()
-    world.append(zombie)
+    balls = [Ball() for _ in range(20)]
+    world += balls
+
 
 # 게임 로직
 def update_world():
